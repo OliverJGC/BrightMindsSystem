@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Account Agreement</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/styles_system.css') }}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="forms-enroll">
+    {% for kids in kids %}
+    <a href="{{ url_for('system.online_registration', id=kids['id']) }}">
+      <button style="width: 140px;" type="button" class="btn btn-danger">Go Back!</button>
+    </a>
+    <h3 style="font-size: 50px;" class="text-center">Online Registration {{ kids['firstname_kid'] }} {{
+      kids['middlename_kid'] }} {{ kids['lastname_kid'] }}</h3>
+    {% endfor %}
+    {% for account_agreement in account_agreement %}
+    <div class="display-flex">
+      <img class="img-logo-brightminds" src="{{ url_for('static', filename='images/logo_brightminds.png')}}">
+    </div>
+    <hr>
+    <div class="row">
+      <h3 class="text-center">Account Agreement</h3>
+      <h5 class="text-center">(Parent information)</h5>
+      <hr>
+      <div class="col-md-3">
+        <label class="form-label"><strong>Who Is Filling? <span style="color:#FF0000" ;>*</span></strong></label>
+        <input class="form-control" value="{{ request.form['who_is_filling'] or account_agreement['who_is_filling'] }}" disabled>
+      </div>
+      <div class="col-md-3">
+        <label class="form-label"><strong>Last Name <span style="color:#FF0000" ;>*</span></strong></label>
+        <input class="form-control" name="lastname"
+          value="{{ request.form['lastname'] or account_agreement['lastname'] }}" pattern="[A-Za-z\s]{1,50}"
+          maxlength="50" disabled>
+      </div>
+      <div class="col-md-3">
+        <label class="form-label"><strong>First Name <span style="color:#FF0000" ;>*</span></strong></label>
+        <input class="form-control" name="firstname"
+          value="{{ request.form['firstname'] or account_agreement['firstname'] }}" pattern="[A-Za-z]{1,50}"
+          maxlength="50" disabled>
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Middle Name</label>
+        <input class="form-control" name="middlename"
+          value="{{ request.form['middlename'] or account_agreement['middlename'] }}" pattern="[A-Za-z]{1,50}"
+          disabled maxlength="50">
+      </div>
+      <hr>
+      <div class="col-md-2">
+        <label class="form-label">Home</label>
+        <input class="form-control" name="home_phone"
+          value="{{ request.form['home_phone'] or account_agreement['home_phone'] }}" pattern="[0-9]{1,10}"
+          disabled maxlength="10">
+      </div>
+      <div class="col-md-2">
+        <label class="form-label">Cell Phone</label>
+        <input class="form-control" name="cell_phone"
+          value="{{ request.form['cell_phone'] or account_agreement['cell_phone'] }}" pattern="[0-9]{1,10}"
+          maxlength="10" disabled>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label"><strong>Social Security (Last 4 Digit) <span style="color:#FF0000"
+              ;>*</span></strong></label>
+        <input type="text" name="social_security_4digit"
+          value="{{ request.form['social_security_4digit'] or account_agreement['social_security_4digit'] }}"
+          pattern="[0-9]{1,4}" maxlength="4" class="form-control" disabled>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label"><strong>Driver's License # <span style="color:#FF0000" ;>*</span></strong></label>
+        <input type="text" name="drivers_license"
+          value="{{ request.form['drivers_license'] or account_agreement['drivers_license'] }}" class="form-control"
+          pattern="[0-9]{1,20}" maxlength="20" disabled>
+      </div>
+      <hr>
+      <div class="col-md-3">
+        <label class="form-label"><strong>Email <span style="color:#FF0000" ;>*</span></strong></label>
+        <input type="email" name="email" value="{{ request.form['email'] or account_agreement['email'] }}"
+          maxlength="50" class="form-control" disabled>
+      </div>
+      <div class="col-md-3">
+        <label class="form-label"><strong>Present Address <span style="color:#FF0000" ;>*</span></strong></label>
+        <input class="form-control" name="present_address"
+          value="{{ request.form['present_address'] or account_agreement['present_address'] }}" maxlength="50" disabled>
+      </div>
+      <div class="col-md-2">
+        <label class="form-label"><strong>City <span style="color:#FF0000" ;>*</span></strong></label>
+        <input class="form-control" name="city" value="{{ request.form['city'] or account_agreement['city'] }}"
+          pattern="[a-zA-Z\s]{1,20}" maxlength="20" disabled>
+      </div>
+      <div class="col-md-2">
+        <label class="form-label"><strong>State <span style="color:#FF0000" ;>*</span></strong></label>
+        <input class="form-control" name="state" value="{{ request.form['state'] or account_agreement['state'] }}"
+          pattern="[a-zA-Z]{1,20}" maxlength="20" disabled>
+      </div>
+      <div class="col-md-2">
+        <label class="form-label"><strong>Zip <span style="color:#FF0000" ;>*</span></strong></label>
+        <input class="form-control" name="zip" value="{{ request.form['zip'] or account_agreement['zip'] }}"
+          pattern="[0-9]{1,5}" maxlength="5" disabled>
+      </div>
+      <hr>
+      <div class="col-md-4">
+        <label class="form-label"><strong>Employer <span style="color:#FF0000" ;>*</span></strong></label>
+        <input class="form-control" name="employer"
+          value="{{ request.form['employer'] or account_agreement['employer'] }}" pattern="[a-zA-Z\s]{1,30}"
+          maxlength="30" disabled>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label"><strong>Address (Employer) <span style="color:#FF0000" ;>*</span></strong></label>
+        <input class="form-control" name="address_employer"
+          value="{{ request.form['address_employer'] or account_agreement['address_employer'] }}" maxlength="50"
+          disabled>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label"><strong>Business Phone <span style="color:#FF0000" ;>*</span></strong></label>
+        <input class="form-control" name="business_phone"
+          value="{{ request.form['business_phone'] or account_agreement['business_phone'] }}" pattern="[0-9]{1,10}"
+          maxlength="10" disabled>
+      </div>
+      <hr>
+      <p style="font-size: 20px;" class="text-center">The Undersigned agrees and understands that the services rendered
+        for child care are
+        subject to the following
+        conditions:</p>
+      <ul>
+        <li>
+          <strong>-All tuitions are payable in advance.</strong>
+        </li>
+        <hr>
+        <li>
+          <strong>-Customer will pay any balances in full before any reinstatement of childcare services.</strong>
+        </li>
+        <hr>
+        <li>
+          <strong>-Customer agrees that they are aware of their fee and all other applicable fees of Bright Minds Early
+            Learning
+            Center that were set forth during the child’s admission.</strong>
+        </li>
+        <hr>
+        <li>
+          <strong>-The customer (parent or guardian) agrees to pay, in the event the account is turned over to an agency
+            or
+            attorney for collection, reasonable attorney fees, plus all attendant collection costs, or court
+            costs.</strong>
+        </li>
+      </ul>
+      <hr>
+      <div class="">
+        <div class="form-check">
+          {% if account_agreement['sign'] == 0 %}
+          <input class="form-check-input" type="checkbox" checked>
+          <label class="form-check-label">I have completed this form and understand that checking this box is considered
+            to be my
+            electronic signature of the form, certifying that the information above is true and accurate.
+            <strong><span style="color:#FF0000" ;>*</span></strong></label>
+          {% elif account_agreement['sign'] == 1 %}
+          <input class="form-check-input" type="checkbox" checked disabled>
+          <label class="form-check-label">I have completed this form and understand that checking this box is considered
+            to be my
+            electronic signature of the form, certifying that the information above is true and accurate.
+            <strong><span style="color:#FF0000" ;>*</span></strong></label>
+          {% endif %}
+        </div>
+      </div>
+      <hr>
+    </div>
+    {% endfor %}
+  </div>
+</body>
+
+</html>

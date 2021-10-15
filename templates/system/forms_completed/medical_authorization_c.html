@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Medical Authorization</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/styles_system.css') }}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="forms-enroll">
+    {% for kids in kids %}
+    <a href="{{ url_for('system.online_registration', id=kids['id']) }}">
+      <button style="width: 140px;" type="button" class="btn btn-danger">Go Back!</button>
+    </a>
+    <h3 style="font-size: 50px;" class="text-center">Online Registration {{ kids['firstname_kid'] }} {{
+      kids['middlename_kid'] }} {{ kids['lastname_kid'] }}</h3>
+    {% endfor %}
+    {% for medical_authorization in medical_authorization %}
+    <div class="display-flex">
+      <img class="img-logo-brightminds" src="{{ url_for('static', filename='images/logo_brightminds.png')}}">
+    </div>
+    <hr>
+    <div class="row">
+      <h3 class="text-center">Medical Authorization</h3>
+      <hr>
+      <p>I hereby grant permission for <strong>Bright Minds Early Learning Center</strong> to take necessary steps to
+        obtain emergency
+        medical care until I can be contacted.</p>
+      <p>Steps may include, but not limited to:</p>
+      <ul>
+        <li>
+          Attempt to contact parent/emergency contacts
+        </li>
+        <li>
+          Attempt to contact child’s physician
+        </li>
+        <li>
+          Taking the child to local ER or Clinic
+        </li>
+      </ul>
+      <p>In the event of a serious medical emergency, <strong>Bright Minds Early Learning Center</strong> has my
+        permission to call an
+        ambulance to transport my child(ren) for emergency medical treatment.</p>
+      <h5>CHILDREN FULLNAME COVERED BY AUTHORIZATION: <strong><span style="color:#FF0000" ;>*</span></strong></h5>
+      <div class="input-group mb-3">
+        <span class="input-group-text">1.</span>
+        <input class="form-control" value="{{ request.form['children_authorization'] or medical_authorization['children_authorization'] }}"
+          disabled>
+      </div>
+      <p><strong>Immunizations up to date? <span style="color:#FF0000" ;>*</span></strong></p>
+      <div class="col-md-4">
+        <input class="form-control" value="{{ request.form['immunizations_up_to_date'] or medical_authorization['immunizations_up_to_date'] }}"
+          disabled>
+      </div>
+      <hr>
+      <p><strong>Please list any allergies: <span style="color:#FF0000" ;>*</span></strong></p>
+      <div class="mb-3">
+        <input class="form-control" value="{{ request.form['allergies'] or medical_authorization['allergies'] }}" disabled>
+      </div>
+      <p><strong>Please list any other important medical information that should be known by treating physician: <span
+            style="color:#FF0000" ;>*</span></strong></p>
+      <div class="mb-3">
+        <input class="form-control" value="{{ request.form['any_medical_informaiton'] or medical_authorization['any_medical_informaiton'] }}" disabled>
+      </div>
+      <p><strong>Please list any medications the child takes: <span style="color:#FF0000" ;>*</span></strong></p>
+      <div class="mb-3">
+        <input class="form-control" value="{{ request.form['medications_child_takes'] or medical_authorization['medications_child_takes'] }}" disabled>
+      </div>
+      <div class="">
+        <div class="form-check">
+          {% if medical_authorization['sign'] == 0 %}
+          <input class="form-check-input" type="checkbox" checked>
+          <label class="form-check-label">I have completed this form and understand that checking this box is considered
+            to be my
+            electronic signature of the form, certifying that the information above is true and accurate.
+            <strong><span style="color:#FF0000" ;>*</span></strong></label>
+          {% elif medical_authorization['sign'] == 1 %}
+          <input class="form-check-input" type="checkbox" checked disabled>
+          <label class="form-check-label">I have completed this form and understand that checking this box is considered
+            to be my
+            electronic signature of the form, certifying that the information above is true and accurate.
+            <strong><span style="color:#FF0000" ;>*</span></strong></label>
+          {% endif %}
+        </div>
+      </div>
+      <hr>
+    </div>
+    {% endfor %}
+  </div>
+</body>
+
+</html>

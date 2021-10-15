@@ -1,0 +1,222 @@
+{% extends 'layout_system.html' %}
+{% block title%}Online Registration{% endblock %}
+
+{% block content %}
+<div class="header-system">Bright Minds Early Learning Center</div>
+<div class="wrapper">
+    <div class="sidebar">
+        <h1><i class="fas fa-user"></i> {{ g.user['username'] }}</h1>
+        <a href="{{ url_for('system.index_enroll') }}"><i class="fas fa-home"></i>Home</a>
+        <a href="{{ url_for('system.profile') }}"><i class="fas fa-user"></i>Profile</a>
+        <a href="{{ url_for('system.announcements') }}"><i class="fas fa-address-card"></i>Announcements</a>
+        <a href="{{ url_for('auth.logout') }}"><i class="fas fa-sign-out-alt"></i>Log Out</a>
+    </div>
+    <div class="main_content">
+        <div class="info">
+            {% for kids in kids %}
+            <div class="welcome-container">
+                <hr>
+                <hr>
+                <hr>
+                <hr>
+                <h1 class="welcome-title">Child(s) Online Registration</h1>
+                <hr>
+                <hr>
+                <hr>
+                <hr>
+            </div>
+            {% for message in get_flashed_messages() %}
+            <div class="alert alert-warning alert-container alert-dismissible fade show" role="alert">
+                <strong>Alert!</strong> {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+            <h3 style="font-size: 50px;" class="text-center">{{ kids['firstname_kid'] }} {{ kids['middlename_kid'] }} {{
+                kids['lastname_kid'] }}</h3>
+            <p style="font-size: 20px; width: 80%; margin: auto;" class="text-center">Each field that has <span
+                    style="color: red;">*</span> means that it is mandatory to complete it, if it is not completed, you
+                will not be able to submit the form.
+                At the end of each form, mark the checkmark to agree that you have completed the form correctly. After
+                that, we will notice you through email about the stauts of your kid(s).
+                We are grateful that you have selected us to take care of your childrens!
+            </p>
+            <hr>
+            <table style="width: 50%; margin: auto;" class="text-center table table-online-registration">
+                <thead>
+                    <tr>
+                        <th scope="col">Form</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Last Updated</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for forms in forms %}
+                    <tr>
+                        <td><span>Admission Form 2935 </span></td>
+                        <td>Check Forms</td>
+                        <td>Check Forms</td>
+                        <td>
+                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                data-target="#exampleModal">View</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span>Medical Authorization</span></td>
+                        <td><span>Submitted</span></td>
+                        <td><span>{{ forms['medical_authorization_d'].strftime('%Y-%m-%d') }}</span></td>
+                        <td>
+                            <a href="{{ url_for('forms_completed.medical_authorization_c', id=kids['id']) }}">
+                                <button type="button" class="btn btn-primary">View</button>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span>Children Risk Assestment (TB)</span></td>
+                        <td><span>Submitted</span></td>
+                        <td><span>{{ forms['children_risk_d'].strftime('%Y-%m-%d') }}</span></td>
+                        <td>
+                            <a href="{{ url_for('forms_completed.children_risk_tb_c', id=kids['id']) }}">
+                                <button type="button" class="btn btn-primary">View</button>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span>Account Agreement</span></td>
+                        <td><span>Submitted</span></td>
+                        <td><span>{{ forms['account_agreement_d'].strftime('%Y-%m-%d') }}</span></td>
+                        <td>
+                            <a href="{{ url_for('forms_completed.account_agreement_c', id=kids['id']) }}">
+                                <button type="button" class="btn btn-primary">View</button>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span>Infant Care</span></td>
+                        <td><span>Submitted</span></td>
+                        <td><span>{{ forms['infant_care_d'].strftime('%Y-%m-%d') }}</span></td>
+                        <td>
+                            <a href="{{ url_for('forms_completed.infant_care_c', id=kids['id']) }}">
+                                <button type="button" class="btn btn-primary">View</button>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <hr>
+            {% if kids['all_forms_status'] == 0 %}
+            <p style="font-size: 20px; width: 80%; margin: auto;">
+                After you have completed all the forms, please click submit to confirm that you have filled out all the
+                forms correctly.
+            </p>
+            <hr>
+            <form style="width: 80%; margin: auto; padding-left: 14px;" method="POST">
+                <button style="width: 140px;" type="submit" class="btn btn-primary">Submit</button>
+                <div class="form-check">
+                    <input class="form-check-input" name="sign" type="checkbox" value="1" required>
+                    <label class="form-check-label">I have completed <span style="color:#FF0000" ;>ALL THE FORMS</span> and understand that checking this box is
+                        considered to be my electronic signature of the form, certifying that the information above is true and accurate.
+                        <strong><span style="color:#FF0000" ;>*</span></strong>
+                    </label>
+                </div>
+            </form>
+            {% elif kids['all_forms_status'] == 1 %}
+            <p style="font-size: 20px; width: 80%; margin: auto;">
+                You have completed all the forms. Soon we will send you an email with your child status to confirm that he/she was accepted in Bright Minds Early Learning Center.
+            </p>
+            <hr>
+            <div class="form-check" style="width: 80%; margin: auto; padding-left: 14px;">
+                <input class="form-check-input"  type="checkbox" checked disabled>
+                <label class="form-check-label">I have completed <span style="color:#FF0000" ;>ALL THE FORMS</span> and understand that checking this box is
+                    considered to be my electronic signature of the form, certifying that the information above is true and accurate.
+                    <strong><span style="color:#FF0000" ;>*</span></strong>
+                </label>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Form 2985</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="text-center table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Form</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Last Updated</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for forms in forms %}
+                            <tr>
+                                <td><span>General Information</span></td>
+                                <td><span>Submitted</span></td>
+                                <td><span>{{ forms['general_information_d'].strftime('%Y-%m-%d') }}</span></td>
+                                <td>
+                                    <a href="{{ url_for('forms_completed.general_information_c', id=kids['id']) }}">
+                                        <button type="button" class="btn btn-primary">View</button>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span>Consent Information</span></td>
+                                <td><span>Submitted</span></td>
+                                <td><span>{{ forms['consent_information_d'].strftime('%Y-%m-%d') }}</span></td>
+                                <td>
+                                    <a href="{{ url_for('forms_completed.consent_information_c', id=kids['id']) }}">
+                                        <button type="button" class="btn btn-primary">View</button>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span>Medical and School Information</span></td>
+                                <td><span>Submitted</span></td>
+                                <td><span>{{ forms['medical_school_d'].strftime('%Y-%m-%d') }}</span></td>
+                                <td>
+                                    <a href="#">
+                                        <button type="button" class="btn btn-primary" disabled>View</button>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span>Vaccine Information</span></td>
+                                <td><span>Submitted</span></td>
+                                <td><span>{{ forms['vaccine_information_d'].strftime('%Y-%m-%d') }}</span></td>
+                                <td>
+                                    <a href="{{ url_for('forms_completed.vaccine_information_c', id=kids['id']) }}">
+                                        <button type="button" class="btn btn-primary" disabled>View</button>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span>Signatures</span></td>
+                                <td><span>Submitted</span></td>
+                                <td><span>{{ forms['signatures_d'].strftime('%Y-%m-%d') }}</span></td>
+                                <td>
+                                    <a href="{{ url_for('forms_completed.signatures_c', id=kids['id']) }}">
+                                        <button type="button" class="btn btn-primary">View</button>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% endblock %}

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Admission Form | Part 1</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/styles_system.css') }}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="forms-enroll">
+    {% for kids in kids %}
+    <a href="{{ url_for('system.online_registration', id=kids['id']) }}">
+      <button style="width: 140px;" type="button" class="btn btn-danger">Go Back!</button>
+    </a>
+    <h3 style="font-size: 50px;" class="text-center">Online Registration {{ kids['firstname_kid'] }} {{
+      kids['middlename_kid'] }} {{ kids['lastname_kid'] }}</h3>
+    {% endfor %}
+    {% for general_information in general_information %}
+    <h1 style="padding: 20px;">Admission Information</h1>
+    <p><strong>Purpose:</strong> Use this form to collect all required information about a child enrolling in day care.
+    </p>
+    <p><strong>Directions:</strong> The day care provider gives this form to the child’s parent or guardian. The parent
+      or guardian completes the form in its entirety and returns it to the day care provider before the child's first
+      day of enrollment. The day care provider keeps the form on file at the child care facility.</p>
+    <h2 class="title-forms">General Information</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <label for="operations_name" class="form-label"><strong>Operation's Name</strong></label>
+        <input class="form-control" disabled value="Bright Minds Early Learning Centers">
+      </div>
+      <div class="col-md-6">
+        <label for="directors_name" class="form-label"><strong>Director's Name</strong></label>
+        <input class="form-control" disabled value="Miss Fabiola Rodriguez G. (915) 487-4789 & (915) 595-9997">
+      </div>
+      <hr>
+      <div class="col-md-4">
+        <label class="form-label"><strong>Child's Last Name <span style="color:#FF0000" ;>*</span></strong></label>
+        <input type="text" name="child_lastname" pattern="[A-Za-z\s]{1,50}" maxlength="50"
+          value="{{ request.form['child_lastname'] or general_information['child_lastname'] }}" class="form-control"
+          disabled>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label"><strong>Child's First Name <span style="color:#FF0000" ;>*</span></strong></label>
+        <input type="text" name="child_firstname" pattern="[A-Za-z]{1,50}" maxlength="50"
+          value="{{ request.form['child_firstname'] or general_information['child_firstname'] }}" class="form-control"
+          disabled>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">Child's Middle Name</label>
+        <input type="text" name="child_middlename" pattern="[A-Za-z]{1,50}" maxlength="50"
+          value="{{ request.form['child_middlename'] or general_information['child_middlename'] }}" class="form-control"
+          disabled>
+      </div>
+      <hr>
+      <div class="col-md-6">
+        <label class="form-label"><strong>Date Of Birth <span style="color:#FF0000" ;>*</span></strong></label>
+        <input name="date_birth" class="form-control"
+          value="{{ request.form['date_birth'] or general_information['date_birth'] }}" type="date" disabled>
+      </div>
+      <div class="col-md-6 row">
+        <label for="dateofbirth" class="form-label"><strong>Child Lives With: <span style="color:#FF0000"
+              ;>*</span></strong></label>
+        <input class="form-control"
+          value="{{ request.form['child_lives_with'] or general_information['child_lives_with'] }}" disabled>
+      </div>
+      <hr>
+      <div class="col-md-6">
+        <label class="form-label"><strong>Child’s Home Address <span style="color:#FF0000" ;>*</span></strong></label>
+        <input name="child_home_address"
+          value="{{ request.form['child_home_address'] or general_information['child_home_address'] }}"
+          class="form-control" maxlength="50" disabled>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label"><strong>Date of Admission: <span style="color:#FF0000" ;>*</span></strong></label>
+        <input type="date" name="date_admission"
+          value="{{ request.form['date_admission'] or general_information['date_admission'] }}" class="form-control"
+          disabled>
+      </div>
+      <hr>
+      <div class="col-md-6">
+        <label class="form-label"><strong>Name of Parent or Guardian Completing Form:
+            <span style="color:#FF0000" ;>*</span></strong></label>
+        <input type="text" name="name_completing_form" pattern="[A-Za-z\s]{1,50}" maxlength="50"
+          value="{{ request.form['name_completing_form'] or general_information['name_completing_form'] }}"
+          class="form-control" disabled>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Address of Parent or Guardian (if different from the child's):</label>
+        <input name="address_parent" maxlength="50"
+          value="{{ request.form['address_parent'] or general_information['address_parent'] }}" class="form-control"
+          disabled>
+      </div>
+      <hr>
+      <p class="p-form">List telephone numbers below where parents/guardian may be reached while child is in care.</p>
+      <div class="col-md-3">
+        <label class="form-label"><strong>Parent 1 Telephone No. <span style="color:#FF0000" ;>*</span></strong></label>
+        <input type="tel" name="parent1_phone" class="form-control" pattern="[0-9]{1,10}" maxlength="10"
+          value="{{ request.form['parent1_phone'] or general_information['parent1_phone'] }}" disabled>
+      </div>
+      <div class="col-md-3">
+        <label class="form-label"><strong>Parent 2 Telephone No. <span style="color:#FF0000" ;>*</span></strong></label>
+        <input type="tel" name="parent2_phone" class="form-control" pattern="[0-9]{1,10}" maxlength="10"
+          value="{{ request.form['parent2_phone'] or general_information['parent2_phone'] }}" disabled>
+      </div>
+      <div class="col-md-3">
+        <label class="form-label"><strong>Guardian's Telephone No. <span style="color:#FF0000"
+              ;>*</span></strong></label>
+        <input type="tel" name="guardian_phone" class="form-control" pattern="[0-9]{1,10}" maxlength="10"
+          value="{{ request.form['guardian_phone'] or general_information['guardian_phone'] }}" disabled>
+      </div>
+      <div class="col-md-3 row">
+        <label class="form-label"><strong>Custody Documents on File: <span style="color:#FF0000"
+              ;>*</span></strong></label>
+        <input class="form-control"
+          value="{{ request.form['custody_documents'] or general_information['custody_documents'] }}" disabled>
+      </div>
+      <hr>
+      <p class="p-form">Give the name, address, and phone number of the responsible individual <strong>to call</strong>
+        in case of an
+        emergency if parents/guardian cannot be reached:</p>
+      <div class="col-md-3">
+        <label class="form-label"><strong>Emergency Fullname: <span style="color:#FF0000" ;>*</span></strong></label>
+        <input type="text" name="emergency_fullname" pattern="[A-Za-z\s]{1,50}" maxlength="50"
+          value="{{ request.form['emergency_fullname'] or general_information['emergency_fullname'] }}"
+          class="form-control" disabled>
+      </div>
+      <div class="col-md-3">
+        <label class="form-label"><strong>Emergency Phone Number: <span style="color:#FF0000"
+              ;>*</span></strong></label>
+        <input name="emergency_phone" type="tel" pattern="[0-9]{1,10}" maxlength="10"
+          value="{{ request.form['emergency_phone'] or general_information['emergency_phone'] }}" class="form-control"
+          disabled>
+      </div>
+      <div class="col-md-3">
+        <label class="form-label"><strong>Emergency Address: <span style="color:#FF0000" ;>*</span></strong></label>
+        <input name="emergency_address" maxlength="50"
+          value="{{ request.form['emergency_address'] or general_information['emergency_address'] }}"
+          class="form-control" disabled>
+      </div>
+      <div class="col-md-3">
+        <label for="emergency_relationship" class="form-label"><strong>Relationship: <span style="color:#FF0000"
+              ;>*</span></strong></label>
+        <input class="form-control"
+          value="{{ request.form['emergency_relationship'] or general_information['emergency_relationship'] }}"
+          disabled>
+      </div>
+      <hr>
+      <p class="p-form">I authorize the child care operation <strong>to release</strong> my child to leave the child
+        care operation <strong>ONLY</strong> with the following
+        persons. Please list name and telephone number for each. Children will only be released to a parent or guardian
+        or to
+        a person designated by the parent/guardian after verification of ID.</p>
+      <div class="col-md-4">
+        <label class="form-label"><strong>Fullname (Person 1): <span style="color:#FF0000" ;>*</span></strong></label>
+        <input type="text" name="release_fullname1" pattern="[A-Za-z\s]{1,50}" maxlength="50"
+          value="{{ request.form['release_fullname1'] or general_information['release_fullname1'] }}"
+          class="form-control" disabled>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label"><strong>Fullname (Person 2): <span style="color:#FF0000" ;>*</span></strong></label>
+        <input type="text" name="release_fullname2" pattern="[A-Za-z\s]{1,50}" maxlength="50"
+          value="{{ request.form['release_fullname2'] or general_information['release_fullname2'] }}"
+          class="form-control" disabled>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label"><strong>Fullname (Person 3): <span style="color:#FF0000" ;>*</span></strong></label>
+        <input type="text" name="release_fullname3" pattern="[A-Za-z\s]{1,50}" maxlength="50"
+          value="{{ request.form['release_fullname3'] or general_information['release_fullname3'] }}"
+          class="form-control" disabled>
+      </div>
+      <hr>
+      <div class="col-md-4">
+        <label class="form-label"><strong>Phone Number (Person 1): <span style="color:#FF0000"
+              ;>*</span></strong></label>
+        <input type="tel" name="release_phone1" pattern="[0-9]{1,10}" maxlength="10"
+          value="{{ request.form['release_phone1'] or general_information['release_phone1'] }}" class="form-control"
+          disabled />
+      </div>
+      <div class="col-md-4">
+        <label for="phone_number_contact_2" class="form-label"><strong>Phone Number (Person 2): <span
+              style="color:#FF0000" ;>*</span></strong></label>
+        <input type="tel" name="release_phone2" pattern="[0-9]{1,10}" maxlength="10"
+          value="{{ request.form['release_phone2'] or general_information['release_phone2'] }}" class="form-control"
+          disabled>
+      </div>
+      <div class="col-md-4">
+        <label for="phone_number_contact_3" class="form-label"><strong>Phone Number (Person 3): <span
+              style="color:#FF0000" ;>*</span></strong></label>
+        <input type="tel" name="release_phone3" pattern="[0-9]{1,10}" maxlength="10"
+          value="{{ request.form['release_phone3'] or general_information['release_phone3'] }}" class="form-control"
+          disabled>
+      </div>
+      <hr>
+      <div class="">
+        <div class="form-check">
+          {% if general_information['sign'] == 0 %}
+          <input class="form-check-input" type="checkbox" checked>
+          <label class="form-check-label">I have completed this form and understand that checking this box is considered
+            to be my
+            electronic signature of the form, certifying that the information above is true and accurate.
+            <strong><span style="color:#FF0000" ;>*</span></strong></label>
+          {% elif general_information['sign'] == 1 %}
+          <input class="form-check-input" type="checkbox" checked disabled>
+          <label class="form-check-label">I have completed this form and understand that checking this box is considered
+            to be my
+            electronic signature of the form, certifying that the information above is true and accurate.
+            <strong><span style="color:#FF0000" ;>*</span></strong></label>
+          {% endif %}
+        </div>
+      </div>
+      <hr>
+    </div>
+    {% endfor %}
+  </div>
+</body>
+
+</html>

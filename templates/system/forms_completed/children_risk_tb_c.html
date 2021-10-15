@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Children Risk Assestment (TB)</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/styles_system.css') }}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="forms-enroll">
+    {% for kids in kids %}
+    <a href="{{ url_for('system.online_registration', id=kids['id']) }}">
+      <button style="width: 140px;" type="button" class="btn btn-danger">Go Back!</button>
+    </a>
+    <h3 style="font-size: 50px;" class="text-center">Online Registration {{ kids['firstname_kid'] }} {{
+      kids['middlename_kid'] }} {{ kids['lastname_kid'] }}</h3>
+    {% endfor %}
+    {% for children_risk_tb in children_risk_tb %}
+    <h1 class="text-center text-lighter">Texas Department of State Health Services</h1>
+    <h2 class="text-center">Tuberculosis (TB) Questionnaire for Children</h2>
+    <div class="row">
+      <p>Tuberculosis (TB) is a disease caused by TB germs and is usually transmitted by an adult person with active TB
+        lung disease. It is spread to another person by coughing or sneezing TB germs into the air. These germs may be
+        breathed in by the child.</p>
+      <p>Adults who have active TB usually have many of the following symptoms: cough for more than two weeks duration,
+        loss of appetite, weight loss of ten or more pounds over a short period of time, fever, chills and night sweats.
+      </p>
+      <p>A person can have TB germs in his or her body but not have TB disease (this is called latent TB infection or
+        LTBI).</p>
+      <p><strong>Tuberculosis is preventable and treatable.</strong> TB skin testing (often called the PPD or Mantoux
+        test) or a TB blood test (called an IGRA) is used to see if your child has been infected with TB germs. No
+        vaccine is recommended for use in the United States to prevent tuberculosis. The test is not a vaccination
+        against TB.</p>
+      <p class="text-center"><strong>We need your help to find out if your child has been exposed to
+          tuberculosis.</strong></p>
+      <hr>
+      <table class="table">
+        <thead>
+          <tr class="table-active">
+            <th scope="col">Place a mark in the appropriate box <strong><span style="color:#FF0000" ;>*</span></strong></th>
+            <th scope="col">Option (Yes/No/Don't Know)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <p>TB can cause a fever of long duration, unexplained weight loss, a cough (lasting over two weeks), or
+                coughing up blood. <strong>As far as you know has your child:</strong></p>
+              <ul>
+                <li>
+                  been around anyone with any of these symptoms or problems?
+                </li>
+                <li>
+                  had any of these symptoms or problems? or
+                </li>
+                <li>
+                  been around anyone sick with TB?
+                </li>
+              </ul>
+            </td>
+            <td>
+              <input class="form-control"
+                value="{{ request.form['tbquestion1_subq1'] or children_risk_tb['tbquestion1_subq1'] }}" disabled>
+              <input class="form-control"
+                value="{{ request.form['tbquestion1_subq2'] or children_risk_tb['tbquestion1_subq2'] }}" disabled>
+              <input class="form-control"
+                value="{{ request.form['tbquestion1_subq3'] or children_risk_tb['tbquestion1_subq3'] }}" disabled>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p><strong>Was your child born in:</strong></p>
+              <ul>
+                <li>
+                  Mexico or any other country in Latin America, the Caribbean, Africa, Eastern Europe or Asia?
+                </li>
+                <li>
+                  been around anyone with any of these symptoms or problems?
+                </li>
+                <li>
+                  had any of these symptoms or problems?
+                </li>
+                <li>
+                  been around anyone sick with TB?
+                </li>
+              </ul>
+            </td>
+            <td>
+              <input class="form-control"
+                value="{{ request.form['tbquestion2_subq1'] or children_risk_tb['tbquestion2_subq1'] }}" disabled>
+              <input class="form-control"
+                value="{{ request.form['tbquestion2_subq2'] or children_risk_tb['tbquestion2_subq2'] }}" disabled>
+              <input class="form-control"
+                value="{{ request.form['tbquestion2_subq3'] or children_risk_tb['tbquestion2_subq3'] }}" disabled>
+              <input class="form-control"
+                value="{{ request.form['tbquestion2_subq4'] or children_risk_tb['tbquestion2_subq4'] }}" disabled>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="col-md-2">
+        <p>Has your child been tested for TB? <strong><span style="color:#FF0000" ;>*</span></strong></p>
+      </div>
+      <div class="col-md-3">
+        <input class="form-control"
+          value="{{ request.form['tbquestion3_subq1'] or children_risk_tb['tbquestion3_subq1'] }}" disabled>
+      </div>
+      <div class="col-md-3">
+        <input type="date" class="form-control"
+          value="{{ request.form['tbquestion3_subq1_date'] or children_risk_tb['tbquestion3_subq1_date'] }}"
+          disabled>
+      </div>
+      <hr>
+      <div class="col-md-2">
+        <p>Has your child ever had a positive TB skin test? <strong><span style="color:#FF0000" ;>*</span></strong></p>
+      </div>
+      <div class="col-md-3">
+        <input class="form-control"
+          value="{{ request.form['tbquestion3_subq2'] or children_risk_tb['tbquestion3_subq2'] }}" disabled>
+      </div>
+      <div class="col-md-3">
+        <input type="date" class="form-control"
+          value="{{ request.form['tbquestion3_subq2_date'] or children_risk_tb['tbquestion3_subq2_date'] }}"
+          disabled>
+      </div>
+      <hr>
+      <div class="col-md-2">
+        <p>Has your child ever had a positive TB blood test? <strong><span style="color:#FF0000" ;>*</span></strong></p>
+      </div>
+      <div class="col-md-3">
+        <input class="form-control"
+          value="{{ request.form['tbquestion3_subq3'] or children_risk_tb['tbquestion3_subq3'] }}" disabled>
+      </div>
+      <div class="col-md-3">
+        <input type="date" class="form-control"
+          value="{{ request.form['tbquestion3_subq3_date'] or children_risk_tb['tbquestion3_subq3_date'] }}" disabled>
+      </div>
+      <hr>
+      <div class="">
+        <div class="form-check">
+          {% if children_risk_tb['sign'] == 0 %}
+          <input class="form-check-input" type="checkbox" checked>
+          <label class="form-check-label">I have completed this form and understand that checking this box is
+            considered
+            to be my
+            electronic signature of the form, certifying that the information above is true and accurate.
+            <strong><span style="color:#FF0000" ;>*</span></strong></label>
+          {% elif children_risk_tb['sign'] == 1 %}
+          <input class="form-check-input" type="checkbox" checked disabled>
+          <label class="form-check-label">I have completed this form and understand that checking this box is
+            considered
+            to be my
+            electronic signature of the form, certifying that the information above is true and accurate.
+            <strong><span style="color:#FF0000" ;>*</span></strong></label>
+          {% endif %}
+        </div>
+      </div>
+      <hr>
+    </div>
+    {% endfor %}
+  </div>
+</body>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</html>

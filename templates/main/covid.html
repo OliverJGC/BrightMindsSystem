@@ -1,0 +1,36 @@
+{% extends './layout_main.html' %}
+{% block body %}
+<div class="grid-img-header-contact">
+  <img class="img-header-contact" src="{{ url_for('static', filename='images/image-header.png')}}">
+  <div class="box-info-header-contact">
+      <h1 class="h1-img-header-contact">ARE YOU INTERESTED IN US?</h1>
+      <h2 class="h2-img-header-contact">CONTACT US</h2>
+  </div>
+</div>
+<div class="container-cards">
+  <div class="card">
+      <img src="{{ url_for('static', filename='images/baby.jpg')}}">
+      <h4>Infants</h4>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, excepturi unde?</p>
+  </div>
+  
+  <div class="card">
+      <img src="{{ url_for('static', filename='images/toddler.jpg')}}">
+      <h4>Toddlers</h4>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, excepturi unde?</p>
+  </div>
+  
+  <div class="card">
+      <img src="{{ url_for('static', filename='images/pre-schooler.jpg')}}">
+      <h4>Pre-Schoolers</h4>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, excepturi unde?</p>
+  </div>
+  
+  <div class="card">
+    <img src="{{ url_for('static', filename='images/after-schooler.jpg')}}">
+    <h4>After-Schoolers</h4>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, excepturi unde?</p>
+  </div>
+</div>
+{% endblock %}
+

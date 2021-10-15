@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Admission Form | Part 6</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/styles_system.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="forms-enroll">
+        {% for kids in kids %}
+        <a href="{{ url_for('system.online_registration', id=kids['id']) }}">
+            <button style="width: 140px;" type="button" class="btn btn-danger">Go Back!</button>
+        </a>
+        <h3 style="font-size: 50px;" class="text-center">Online Registration {{ kids['firstname_kid'] }} {{
+            kids['middlename_kid'] }} {{ kids['lastname_kid'] }}</h3>
+        {% endfor %}
+        <h1 style="padding: 20px;">Admission Information</h1>
+        <p><strong>Purpose:</strong> Use this form to collect all required information about a child enrolling in day
+            care.
+        </p>
+        <p><strong>Directions:</strong> The day care provider gives this form to the child’s parent or guardian. The
+            parent or guardian completes the form in its entirety and returns it to the day care provider before the
+            child's first day of enrollment. The day care provider keeps the form on file at the child care facility.
+        </p>
+        <form method="POST" class="row">
+            <h2 class="title-forms">Physician Or Public Health Personnel Verification</h2>
+            <p style="font-size: 20px;">Signature or stamp of a physician or public health personnel verifying
+                immunization information above:</p>
+            <div class="col-md-4">
+                <label class="form-label"><strong>Signature: <span style="color:#FF0000" ;>*</span></strong></label>
+                <input class="form-control" pattern="[A-Za-z\s]{1,50}" maxlength="50" name="health_personnel_signature" required>
+                <p>Please type your fullname to confirm your signature.</p>
+            </div>
+            <hr>
+            <h2 class="title-forms">Varicella (Chickenpox)</h2>
+            <p style="font-size: 20px;">Varicella (chickenpox) vaccine is not required if your child has had chickenpox
+                disease. If your child has had chickenpox, please complete the statement: My child had varicella disease
+                (chickenpox) on or about (date) and does not need varicella vaccine.</p>
+            <div class="col-md-4">
+                <label class="form-label"><strong>Signature: <span style="color:#FF0000" ;>*</span></strong></label>
+                <input class="form-control" pattern="[A-Za-z\s]{1,50}" maxlength="50" name="varicella_signature" required>
+                <p>Please type your fullname to confirm your signature.</p>
+            </div>
+            <hr>
+            <h2 class="title-forms">Additional Information Regarding Immunizations</h2>
+            <p style="font-size: 20px;">For additional information regarding immunizations, visit the Texas Department
+                of State Health Services’ website at <a
+                    href="https://www.dshs.state.tx.us/page-not-found/">www.dshs.state.tx.us/immunize/public.shtm.</a>
+            </p>
+            <hr>
+            <h2 class="title-forms">TB Test (If Required)</h2>
+            <div class="col-md-3">
+                <label class="form-label"><strong>Please select if your child pass or fail the Tuberculosis Test: <span
+                            style="color:#FF0000" ;>*</span></strong></label>
+                <select class="form-select" name="tb_test" required>
+                    <option value="Pass">Pass</option>
+                    <option value="Fail">Fail</option>
+                </select>
+            </div>
+            <hr>
+            <h2 class="title-forms">Gang Free Zone</h2>
+            <p style="font-size: 20px;">Under the Texas Penal Code, any area within 1,000 feet of a child care center is
+                a gang-free zone, where criminal offenses related to organized criminal activity are subject to harsher
+                penalties.</p>
+            <h2 class="title-forms">Privacy Statement</h2>
+            <p style="font-size: 20px;">DFPS values your privacy. For more information, read our Privacy and Security
+                Policy online at <a
+                    href="http://www.dfps.state.tx.us/policies/privacy.asp.">http://www.dfps.state.tx.us/policies/privacy.asp.</a>
+            </p>
+            <hr>
+            <h2 class="title-forms">Signatures</h2>
+            <div class="col-md-6">
+                <label class="form-label"><strong>Child's Parent or Legal Guardian: <span style="color:#FF0000"
+                            ;>*</span></strong></label>
+                <input class="form-control" pattern="[A-Za-z\s]{1,50}" maxlength="50" name="parent_guardian_signature" required>
+                <p>Please type your fullname to confirm your signature.</p>
+            </div>
+            <hr>
+            <div class="col-md-6">
+                <label class="form-label"><strong>Center Designee: <span style="color:#FF0000"
+                            ;>*</span></strong></label>
+                <input class="form-control" placeholder="Bright Minds Early Learning Center" disabled>
+            </div>
+            <hr>
+            <div class="">
+                <button style="width: 140px;" type="submit" class="btn btn-primary">Submit</button>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="sign" value="1" required>
+                    <label class="form-check-label">I have completed this form and understand that checking this box is
+                        considered
+                        to be my
+                        electronic signature of the form, certifying that the information above is true and accurate.
+                        <strong><span style="color:#FF0000" ;>*</span></strong></label>
+                </div>
+                <hr>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

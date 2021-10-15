@@ -1,0 +1,472 @@
+/*-------MAIN-------*/
+/*-------MAIN-------*/
+/*-------MAIN-------*/
+body {
+  padding: 0;
+  margin: 0;
+  background-color: white;
+}
+.text-center  {
+  text-align: center;
+}
+hr  {
+  clear: both;
+  visibility: hidden;
+}
+
+/*Covid Header*/
+
+.header-covid {
+  background: rgba(35, 155, 235, 0.959);
+  position: relative;
+  margin-bottom: 5px;
+}
+.header-container-covid {
+  width: 100%;
+  max-width: 570px;
+  display: block;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin: 0 auto;
+  text-align: center;
+}
+.header-container-covid span{
+  color: white;
+  font-family: 'Dosis', sans-serif;
+  font-weight: 550;
+  letter-spacing: 5px;
+  font-size: 13px;
+}
+.header-container-covid a{
+  font-family: 'Roboto Slab', serif;
+  background-color: white;
+  color:rgb(45, 163, 218);
+  font-size: 10px;
+  padding: 2px 2px;
+  text-decoration: none;
+  border-radius: 3px;
+  text-align: center;
+}
+
+
+/*Header*/
+
+.a-text{
+  color: white;
+  transition: all 0.3s;
+}
+.a-text:hover{
+  color: white;
+  transform: scale(1.05,1.05);
+}
+.nav-container{
+  background-image: url(../images/image-header.png);
+  background-size: cover; 
+}
+.nav-container-1{
+  background-image: url(../images/image-header-1.png);
+  background-size: cover; 
+}
+.nav-container-2{
+  background-image: url(../images/image-header-2.png);
+  background-size: cover; 
+}
+.header-title{
+  text-align: center;
+  color: white;
+}
+.button-header-a{
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  transition: all 0.3s;
+}
+.button-header-b{
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  border-radius: .25rem;
+  color: #fff;
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+  width: 20%;
+}
+.button-header-a:hover{
+  transform: scale(1.05,1.05);
+  text-decoration: none;
+}
+
+/*Info*/
+
+.container-cards{
+  width: 100%;
+  max-width: 1600px;
+  height: 500px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto;
+}
+.container-cards .card{
+  width: 330px;
+  height: 430px;
+  border-radius: 8px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  margin: 20px;
+  text-align: center;
+  transition: all 0.25s;
+}
+.container-cards .card:hover{
+  transform: translateY(-15px);
+  box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
+}
+.container-cards .card img{
+  width: 330px;
+  height: 220px;
+}
+.container-cards .card h4{
+  font-weight: 900;
+  letter-spacing: 3px;
+  font-family: 'Dosis', sans-serif;;
+}
+.container-cards .card p{
+  padding: 0 1rem;
+  font-size: 16px;
+  font-weight: 300;
+  font-family: 'Roboto', sans-serif;
+}
+
+/*Main Bright Minds*/
+
+.section-daycare{
+  background: white;
+  min-height: calc(65vh - 100px - 300px);
+}
+.contenedor-daycare{
+  width: 90%;
+  max-width: 1000px;
+  margin: auto;
+  overflow: hidden;
+  font-family: 'Quicksand', sans-serif;
+}
+.daycare-cont{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.ind{
+  width: 28%;
+  text-align: center;
+}
+.ind img{
+  width: 90%;
+}
+.ind h3{
+  margin: 5px 0;
+  font-size: 30px;
+}
+.ind p{
+  font-weight: 300;
+  font-size: 20px;
+  text-align: center;
+}
+
+/*Footer*/
+
+footer{
+  width: 100%;
+  bottom: 0;
+  line-height: 5px;
+}
+
+.footer-header {
+  background: rgb(35, 155, 235);
+  padding: 1px;
+}
+.footer-header h3{
+  color: white;
+  font-size: 30px;
+  font-weight: lighter;
+}
+.footer-container{
+  font-family: 'Quicksand', sans-serif;
+  width: 100%;
+  height: auto;
+  line-height: 5px;
+}
+.footer-links{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+.footer-links a{
+  padding: 10px;
+  transition: all 0.5s;
+  color: black;
+}
+.footer-links a:hover{
+  transform: scale(1.05,1.05);
+  color: #0069d9;
+}
+
+/*-------CONTACT-------*/
+/*-------CONTACT-------*/
+/*-------CONTACT-------*/
+
+
+/*Formulario Contact*/
+
+.form-container {
+  width: 60%;
+  margin: auto;
+}
+#status {
+  width: 90%;
+  font-family: 'Roboto', sans-serif;
+  max-width: 500px;
+  text-align: center;
+  padding: 10px;
+  margin: 0 auto;
+  border-radius: 8px;
+}
+#status.success {
+  background-color: rgba(44, 185, 44, 0.651);
+  animation: status 4s ease forwards;
+}
+#status.error {
+  background-color: rgb(250, 129, 92);
+  color: white;
+  animation: status 4s ease forwards;
+}
+@keyframes status {
+  0% {
+    opacity: 1;
+    pointer-events: all;
+  }
+  90% {
+    opacity: 1;
+    pointer-events: all;
+  }
+  100% {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+/*-------SITEMAP-------*/
+/*-------SITEMAP-------*/
+/*-------SITEMAP-------*/
+
+.map-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto;
+}
+.map-text{
+  color: black;
+  padding: 15px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  letter-spacing: 5px;
+  font-size: 38px;
+  text-align: center;
+}
+.map-brightelc{
+  grid-column: 2/6;
+  grid-row: 2/3;
+}
+.map-brightkids{
+  grid-column: 7/11;
+  grid-row: 2/3;
+}
+.container-cards-sitemap{
+  width: 100%;
+  max-width: 1600px;
+  height: 500px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto;
+  padding-top: 30px;
+}
+.container-cards-sitemap .card-sitemap{
+  width: 330px;
+  height: 430px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 20px;
+  text-align: center;
+  transition: all 0.25s;
+}
+.container-cards-sitemap .card-sitemap img{
+  width: 330px;
+  height: 220px;
+}
+.container-cards-sitemap .card-sitemap h4{
+  font-size: 30px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  font-family: 'Dosis', sans-serif;;
+}
+.container-cards-sitemap .card-sitemap p{
+  font-size: 20px;
+  font-weight: 300;
+  font-family: 'Roboto', sans-serif;
+}
+
+/*RESPONSIVE*/
+
+@media (max-width: 1479px) {
+  .container-cards{
+    height: 1000px;
+  }
+  /*Formulario*/
+  .form-container {
+    grid-template-rows: repeat(10, 70px);
+  }
+  .firstname-group{
+    grid-column: 3/8;
+  }
+  .lastname-group{
+    grid-column: 3/8;
+  }
+  .email-group{
+    grid-column: 3/8;
+  }
+  .phone-group{
+    grid-column: 3/8;
+  }
+  .message-group{
+    grid-column: 3/8;
+    grid-row: 5/6;
+  }
+  .button-contact{
+    grid-column: 3/8;
+    grid-row: 10/11;
+  }
+
+}
+@media (max-width: 1109px) {
+  .container-cards-sitemap{
+    height: 1000px;
+  }
+}
+@media only screen and (max-width: 1021px) {
+  .menu-icon{
+    display: block;
+    cursor: pointer;
+  }
+  .navigation{
+    width: 100%;
+  }
+  .navigation ul{
+    display: none;
+  }
+  .navigation ul.show{
+    display: block;
+  }
+  .navigation ul li{
+    display: block;
+  }
+  .navigation ul li a{
+    display: block;
+    padding: 0.5rem 1rem;
+    transition: all 0.4s linear;
+    border-radius: 5px;
+  }
+  .navigation ul li a:hover{
+    background: #1f8d28e8;
+  }
+  .textos h1{
+    font-size:25px;
+  }
+  .textos h3{
+    font-size:21px;
+  }
+}
+@media screen and (max-width:900px){
+  .daycare-cont{
+    justify-content: center;
+    flex-direction: column;
+  }
+  .ind{
+    width: 100%;
+    text-align: center;
+  }
+  .ind:nth-child(1), .ind:nth-child(2){
+    margin-bottom: 60px;
+  }
+  .ind img{
+    width: 90%;
+  }
+}
+@media (max-width: 739px) {
+  .container-cards{
+    height: 2000px;
+  }
+  .container-cards-sitemap{
+    height: 1500px;
+  }
+}
+@media (max-width: 656px) {
+  .box-info-header{
+    padding-top: 50px;
+  }
+  .box-info-header h1,h2{
+    letter-spacing: 3px;
+  }
+  .button-img-header{
+    font-size: 13px;
+  }
+  .servicio-cont{
+    justify-content: center;
+    flex-direction: column;
+    margin: auto;
+    width: 400px;
+  }
+
+}
+@media (max-width: 570px) {
+  .header-container-covid span{
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+  .header-container-covid a{
+    font-size: 8px;
+  }
+  .button-img-header{
+    font-size: 10px;
+  }
+  .box-info-header h1{
+    font-size: 30px;
+  }
+  .footer-links a{
+    font-size: 15px;
+  }
+  .h1-img-header-contact{
+    font-size: 30px;
+  }
+  .h2-img-header-contact{
+    font-size: 20px;
+  }
+}
+@media (max-width: 483px) {
+  .footer-container h3{
+    font-size:19px;
+  }
+  .footer-links a{
+    font-size: 12px;
+  }
+  .footer-container h5{
+    font-size:12px;
+    }
+}
+@media (max-width: 443px) {
+  .footer-links a{
+    font-size: 9px;
+  }
+  .footer-container h5{
+    font-size:9px;
+  }
+}

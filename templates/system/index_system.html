@@ -1,0 +1,55 @@
+{% extends 'layout_system.html' %}
+{% block title%}Children{% endblock %}
+
+{% block content %}
+<div class="header-system">Bright Minds Early Learning Center</div>
+<div class="wrapper">
+  <div class="sidebar">
+    <h1><i class="fas fa-user"></i> {{ g.user['username'] }}</h1>
+    <a href="{{ url_for('system.index_enroll') }}"><i class="fas fa-home"></i>Home</a>
+    <a href="{{ url_for('system.profile') }}"><i class="fas fa-user"></i>Profile</a>
+    <a href="{{ url_for('system.announcements') }}"><i class="fas fa-address-card"></i>Announcements</a>
+    <a href="{{ url_for('auth.logout') }}"><i class="fas fa-sign-out-alt"></i>Log Out</a>
+  </div>
+
+  <div class="main_content">
+    <div class="info">
+      <div class="welcome-container">
+        <hr>
+        <hr>
+        <hr>
+        <hr>
+        <h1 class="welcome-title">Welcome!</h1>
+        <hr>
+        <hr>
+        <hr>
+        <hr>
+      </div>
+      <p class="info-p">If one of your childs is in red, that means you have to complete the online registration
+        to be accepted in our daycare. If one of your childs is in green, that means you have already
+        completed the online registration, and you will be able to see his status in our daycare.
+      </p>
+      <div class="flex-container">
+        {% for kids in kids %}
+        <div class="container-profile">
+          <center>
+            <img src="{{ url_for('static', filename='images/profile.png') }}" />
+          </center>
+          <h2>{{ kids['firstname_kid'] }} {{ kids['middlename_kid'] }} {{ kids['lastname_kid'] }}</h2>
+          {% if kids['all_forms_status'] == 0 %}
+          <a class="a-button" href="{{ url_for('system.online_registration', id=kids['id']) }}">
+            <button type="button" class="btn btn-danger">Complete Online Registration</button>
+          </a>
+          {% elif kids['all_forms_status'] == 1 %}
+          <a class="a-button" href="{{ url_for('system.online_registration', id=kids['id']) }}">
+            <button type="button" style="width: 320px;" class="btn btn-success">Online Registration Has Been
+              Completed</button>
+          </a>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

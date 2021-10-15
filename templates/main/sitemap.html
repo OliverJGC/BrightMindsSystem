@@ -1,0 +1,36 @@
+{% extends './layout_main.html' %}
+{% block body %}
+<div class="map-container">
+  <h1 style="color: rgb(56, 56, 56);" class="text-center">Bright Minds Early Learning Center</h1>
+  <iframe class="map-brightelc"
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3391.500218930301!2d-106.32803838484287!3d31.784114581283088!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86e744de5fa74b2f%3A0x5d1583cddc346792!2sBright%20Minds%20ELC!5e0!3m2!1ses-419!2sus!4v1617424317953!5m2!1ses-419!2sus"
+    width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+</div>
+
+<div class="container-cards-sitemap">
+  <div class="card-sitemap">
+    <img src="{{ url_for('static', filename='images/image-1.jpg')}}">
+    <h4>Responsability</h4>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, excepturi unde?</p>
+  </div>
+
+  <div class="card-sitemap">
+    <img src="{{ url_for('static', filename='images/image-2.jpg')}}">
+    <h4>Tolerance</h4>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, excepturi unde?</p>
+  </div>
+
+  <div class="card-sitemap">
+    <img src="{{ url_for('static', filename='images/image-3.jpg')}}">
+    <h4>Respect</h4>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, excepturi unde?</p>
+  </div>
+</div>
+<div class="map-container">
+  <h1 style="color: rgb(56, 56, 56);" class="text-center">Bright Kids</h1>
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3386.421562869276!2d-106.43988848451772!3d31.922310234377534!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86e753f67dae8261%3A0x74e3b95f2379e484!2s10710%20Gateway%20N%20Blvd%2C%20El%20Paso%2C%20TX%2079924!5e0!3m2!1ses-419!2sus!4v1619016835405!5m2!1ses-419!2sus"
+    width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+</div>
+<hr>
+{% endblock %}

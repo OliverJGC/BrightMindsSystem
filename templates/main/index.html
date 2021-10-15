@@ -1,0 +1,119 @@
+{% extends './layout_main.html' %}
+{% block body %}
+<div class="container-cards">
+  <div class="card">
+      <img src="{{ url_for('static', filename='images/baby.jpg')}}">
+      <h4>Infants</h4>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, excepturi unde?</p>
+  </div>
+  
+  <div class="card">
+      <img src="{{ url_for('static', filename='images/toddler.jpg')}}">
+      <h4>Toddlers</h4>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, excepturi unde?</p>
+  </div>
+  
+  <div class="card">
+      <img src="{{ url_for('static', filename='images/pre-schooler.jpg')}}">
+      <h4>Pre-Schoolers</h4>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, excepturi unde?</p>
+  </div>
+  
+  <div class="card">
+    <img src="{{ url_for('static', filename='images/after-schooler.jpg')}}">
+    <h4>After-Schoolers</h4>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, excepturi unde?</p>
+  </div>
+</div>
+<!--Bright Minds Early Learning Center-->
+<div class="nav-container-1">
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <h1 style="font-size: 50px;" class="header-title">Bright Minds Early Learning Center</h1>
+  <a class="button-header-a" href="{{ url_for('auth.login') }}">
+    <button class="button-header-b">Login</button>
+  </a>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+</div>
+<section class="section-daycare">
+  <div class="contenedor-daycare">
+      <div class="daycare-cont">
+          <div class="ind">
+              <h3>Location <a href="https://goo.gl/maps/Dhmo3LhesRBLYzwL9"><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+              </svg></a></h3>
+              <p>10761 Pebble Hills Ste. A 79935</p>
+              <p>El Paso, Texas</p>
+          </div>
+          <div class="ind">
+              <h3>Date and Time <a href="{{ url_for('main.contact_us') }}"><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-calendar-check-fill" viewBox="0 0 16 16">
+                <path d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zm-5.146-5.146-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708z"/>
+              </svg></a></h3>
+              <p>Monday-Friday 5:30AM to 8:00PM</p>
+              <p>Weekend 7:00AM to 6:00PM</p>
+          </div>
+          <div class="ind">
+              <h3>Phone and Email <a href="{{ url_for('main.contact_us') }}"><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+              </svg></a></h3>
+              <p>brightminds@contact.com</p>
+              <p>915-801-6099</p>
+          </div>
+        </div>
+      </div>
+  </div>
+</section>
+<div class="nav-container-2">
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <h1 style="font-size: 50px;" class="header-title">Bright Kids</h1>
+  <a class="button-header-a" href="{{ url_for('auth.login') }}">
+    <button class="button-header-b">Login</button>
+  </a>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+</div>
+<section class="section-daycare">
+  <div class="contenedor-daycare">
+      <div class="daycare-cont">
+          <div class="ind">
+              <h3>Location <a href="https://goo.gl/maps/Dhmo3LhesRBLYzwL9"><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+              </svg></a></h3>
+              <p>10710 Gayeway North Suite B1 79924</p>
+              <p>El Paso, Texas</p>
+          </div>
+          <div class="ind">
+              <h3>Date and Time <a href="{{ url_for('main.contact_us') }}"><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-calendar-check-fill" viewBox="0 0 16 16">
+                <path d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zm-5.146-5.146-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708z"/>
+              </svg></a></h3>
+              <p>Monday-Friday 5:30AM to 8:00PM</p>
+              <p>Weekend 7:00AM to 6:00PM</p>
+          </div>
+          <div class="ind">
+              <h3>Phone and Email <a href="{{ url_for('main.contact_us') }}"><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+              </svg></a></h3>
+              <p>brightminds@contact.com</p>
+              <p>915-801-6099</p>
+          </div>
+        </div>
+      </div>
+  </div>
+</section>
+
+{% endblock %}
+

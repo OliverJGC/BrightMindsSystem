@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+{% block title%}Profile Information{% endblock %}
+
+{% block content %}
+<div class="d-flex" id="wrapper">
+  <div class="bg-light border-right" id="sidebar-wrapper">
+      <div class="sidebar-heading">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+        </svg>{{ g.user['username'] }}
+      </div>
+      <div class="list-group list-group-flush">
+        <a href="{{ url_for('todo.create') }}" class="list-group-item list-group-item-action bg-light">Online Registration</a>
+        <a href="{{ url_for('todo.index_enroll') }}" class="list-group-item list-group-item-action bg-light">Children Details</a>
+        <a href="{{ url_for('todo.index_enroll') }}" class="list-group-item list-group-item-action bg-light">Announcements</a>
+        <a href="{{ url_for('todo.profile') }}" class="list-group-item list-group-item-action bg-light">Profile</a>
+        <a href="{{ url_for('auth.logout') }}" class="list-group-item list-group-item-action bg-light">Log Out</a>
+      </div>
+  </div>
+  <div id="page-content-wrapper">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+      <button class="btn btn-primary" id="menu-toggle">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="white" class="bi bi-list" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+        </svg>
+      </button>
+      <h1 class="h1-index">Bright Minds ELC</h1>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item active">
+              <a class="nav-link" href="{{ url_for('auth.logout') }}">Log Out</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    {% for parent in parents %}
+    <div class="container-profile">
+      <h1 class="h1-1">Profile and Information</h1>
+    </div>
+    <hr class="hr-1">
+    <div class="container-profile-1">
+      <h2>Your personal information</h2>
+      <h4 class="h4-1">Fullname</h4>
+      <h4><span class="span-1">{{parent['firstname_parent']}} {{parent['lastname_parent']}}</span></h4>
+      <hr>
+      <h4 class="h4-1">Username</h4>
+      <h4><span class="span-1">{{parent['username_parent']}}</span></h4>
+      <hr>
+      <h4 class="h4-1">Email</h4>
+      <h4><span class="span-1">{{parent['email_parent']}}</span></h4>
+      <hr>
+      <h4 class="h4-1">Phone Number</h4>
+      <h4><span class="span-1">{{parent['phone_parent']}}</span></h4>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

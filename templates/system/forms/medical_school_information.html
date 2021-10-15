@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Admission Form | Part 3</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/styles_system.css') }}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="forms-enroll">
+    {% for kids in kids %}
+    <a href="{{ url_for('system.online_registration', id=kids['id']) }}">
+      <button style="width: 140px;" type="button" class="btn btn-danger">Go Back!</button>
+    </a>
+    <h3 style="font-size: 50px;" class="text-center">Online Registration {{ kids['firstname_kid'] }} {{
+      kids['middlename_kid'] }} {{ kids['lastname_kid'] }}</h3>
+    {% endfor %}
+    <h1 style="padding: 20px;">Admission Information</h1>
+    <p><strong>Purpose:</strong> Use this form to collect all required information about a child enrolling in day care.
+    </p>
+    <p><strong>Directions:</strong> The day care provider gives this form to the child’s parent or guardian. The parent
+      or guardian completes the form in its entirety and returns it to the day care provider before the child's first
+      day of enrollment. The day care provider keeps the form on file at the child care facility.</p>
+    <form method="POST" class="row">
+      <h2 class="title-forms">Authorization For Emergency Medical Attention</h2>
+      <p style="font-size: 20px;">In the event I cannot be reached to make arrangements for emergency medical care, I
+        authorize the person in charge to take my child to:</p>
+      <div class="col-md-4">
+        <label class="form-label"><strong>Name Of Physician: <span style="color:#FF0000" ;>*</span></strong></label>
+        <input class="form-control" name="name_physician" pattern="[A-Za-z\s]{1,50}" maxlength="50" required>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label"><strong>Address: <span style="color:#FF0000" ;>*</span></strong></label>
+        <input class="form-control" name="address_physician" maxlength="50" required>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label"><strong>Phone Number: <span style="color:#FF0000" ;>*</span></strong></label>
+        <input class="form-control" name="phone_physician" pattern="[0-9]{1,10}" maxlength="10" required>
+      </div>
+      <hr>
+      <div class="col-md-4">
+        <label class="form-label"><strong>Name of Emergency Care Facility: <span style="color:#FF0000"
+              ;>*</span></strong></label>
+        <input class="form-control" name="name_emergency_care_facility" pattern="[A-Za-z\s]{1,50}" maxlength="50" required>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label"><strong>Address: <span style="color:#FF0000" ;>*</span></strong></label>
+        <input class="form-control" name="address_emergency_care_facility" maxlength="50" required>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label"><strong>Phone Number: <span style="color:#FF0000" ;>*</span></strong></label>
+        <input class="form-control" name="phone_emergency_care_facility" pattern="[0-9]{1,10}" maxlength="10" required>
+      </div>
+      <hr>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="give_consent_facility" value="1" required>
+        <label class="form-check-label">I give consent for the facility to secure any and all necessary emergency
+          medical care for my child.
+          <strong><span style="color:#FF0000" ;>*</span></strong></label>
+      </div>
+      <hr>
+      <h2 class="title-forms">Child's Additional Information Section</h2>
+      <p style="font-size: 20px;">List any special needs that your child may have, such as environmental allergies, food
+        intolerances, existing illness, previous serious illness, injuries and hospitalizations during the past 12
+        months, any medication prescribed for long-term continuous use, and any other information which caregivers
+        should be aware of:</p>
+      <div class="col-md-3 col">
+        <label class="form-label"><strong>Does your child have diagnosed food allergies? <span style="color:#FF0000"
+              ;>*</span></strong></label>
+        <select class="form-select" name="child_diagnosed_food_allergies" required>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+      <hr>
+      <p style="font-size: 20px;">Child day care operations are public accommodations under the Americans with
+        Disabilities Act (ADA), Title III. If you believe that such an operation may be practicing discrimination in
+        violation of Title III, you may call the ADA Information Line at (800) 514-0301 (voice) or (800) 514-0383 (TTY).
+      </p>
+      <hr>
+      <h2 class="title-forms">School Age Children</h2>
+      <p style="font-size: 20px;">My child attends the following school:</p>
+      <div class="col-md-4">
+        <label class="form-label"><strong>Name Of School: <span style="color:#FF0000" ;>*</span></strong></label>
+        <input class="form-control" name="name_of_school" pattern="[A-Za-z\s]{1,50}" maxlength="50" required>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label"><strong>School Phone Number: <span style="color:#FF0000" ;>*</span></strong></label>
+        <input class="form-control" name="school_phone_number" pattern="[0-9]{1,10}" maxlength="10" required>
+      </div>
+      <hr>
+      <div class="col-md-12">
+        <p>My child has permission to (check all that apply):</p>
+      </div>
+      <div class="col-md-6 row">
+        <div class="form-check col">
+          <select class="form-select" name="walk_from_school_home" required>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+          <label class="form-check-label">- Walk to or from school or home</label>
+        </div>
+        <div class="form-check col">
+          <select class="form-select" name="ride_a_bus" required>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+          <label class="form-check-label">- Ride a bus</label>
+        </div>
+        <div class="form-check col">
+          <select class="form-select" name="released_care_sibling_under_18" required>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+          <label class="form-check-label">- Be released to the care of his/her sibling under 18 years old</label>
+        </div>
+      </div>
+      <hr>
+      <div class="col-md-6">
+        <label class="form-label"><strong>Authorized pick up/drop off locations other than the child’s address: <span
+              style="color:#FF0000" ;>*</span></strong></label>
+        <input class="form-control" name="authorized_locations" maxlength="80" required>
+      </div>
+      <hr>
+      <div class="">
+        <button style="width: 140px;" type="submit" class="btn btn-primary">Submit</button>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="sign" value="1" required>
+          <label class="form-check-label">I have completed this form and understand that checking this box is considered
+            to be my
+            electronic signature of the form, certifying that the information above is true and accurate.
+            <strong><span style="color:#FF0000" ;>*</span></strong></label>
+        </div>
+      </div>
+      <hr>
+    </form>
+  </div>
+</body>
+
+</html>

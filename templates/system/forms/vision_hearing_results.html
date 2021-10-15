@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Admission Form | Part 4</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/styles_system.css') }}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="forms-enroll">
+    <a href="{{ url_for('system.online_registration') }}">
+      <button style="width: 140px;" type="button" class="btn btn-danger">Go Back!</button>
+    </a>
+    <h1 style="padding: 20px;">Admission Information</h1>
+    <p><strong>Purpose:</strong> Use this form to collect all required information about a child enrolling in day care.
+    </p>
+    <p><strong>Directions:</strong> The day care provider gives this form to the child’s parent or guardian. The parent
+      or guardian completes the form in its entirety and returns it to the day care provider before the child's first
+      day of enrollment. The day care provider keeps the form on file at the child care facility.</p>
+    <h2 class="title-forms">Requirements For Exclusion</h2>
+    <form method="POST" class="row">
+      <div class="col-md-9">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox">
+          <label class="form-check-label">I have attached a signed and dated affidavit stating that I decline
+            immunizations for reason of conscience, including religious belief, on the form described by Section
+            161.0041 Health and Safety Code submitted no later than the 90th day after the affidavit is
+            notarized.</label>
+        </div>
+      </div>
+      <hr>
+      <div class="col-md-9">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox">
+          <label class="form-check-label">I have attached a signed and dated affidavit stating that the vision or
+            hearing screening conflicts with the tenets or practices of a church or religious denomination that I am an
+            adherent or member of.</label>
+        </div>
+      </div>
+      <hr>
+      <h2 class="title-forms">Vision Exam Results</h2>
+      <div class="col-md-2">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">R 20/</span>
+          </div>
+          <input type="number" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">L 20/</span>
+          </div>
+          <input type="number" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Pass/Fail</span>
+          </div>
+          <select class="form-select" name="" required>
+            <option value="Pass">Pass</option>
+            <option value="Fail">Fail</option>
+          </select>
+        </div>
+      </div>
+      <h2 class="title-forms">Hearing Exam Results</h2>
+      <div class="col-md-12">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Ear</th>
+              <th scope="col">1000 HZ</th>
+              <th scope="col">2000 HZ</th>
+              <th scope="col">4000 HZ</th>
+              <th scope="col">Pass or Fail</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Right</td>
+              <td>
+                <input type="tel" class="form-control" maxlength="4" required>
+              </td>
+              <td>
+                <input type="tel" class="form-control" maxlength="4" required>
+              </td>
+              <td>
+                <input type="tel" class="form-control" maxlength="4" required>
+              </td>
+              <td>
+                <select class="form-select" name="" required>
+                  <option value="Pass">Pass</option>
+                  <option value="Fail">Fail</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Left</td>
+              <td>
+                <input type="tel" class="form-control" maxlength="4" required>
+              </td>
+              <td>
+                <input type="tel" class="form-control" maxlength="4" required>
+              </td>
+              <td>
+                <input type="tel" class="form-control" maxlength="4" required>
+              </td>
+              <td>
+                <select class="form-select" name="" required>
+                  <option value="Pass">Pass</option>
+                  <option value="Fail">Fail</option>
+                </select>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <hr>
+      <div class="">
+        <button style="width: 140px;" type="submit" class="btn btn-primary">Submit</button>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" required>
+          <label class="form-check-label">I have completed this form and understand that checking this box is considered
+            to be my
+            electronic signature of the form, certifying that the information above is true and accurate.
+            <strong><span style="color:#FF0000" ;>*</span></strong></label>
+        </div>
+        <hr>
+    </form>
+  </div>
+</body>
+
+</html>

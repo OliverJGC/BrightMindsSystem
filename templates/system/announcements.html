@@ -1,0 +1,30 @@
+{% extends 'layout_system.html' %}
+{% block title%}Children{% endblock %}
+
+{% block content %}
+<div class="header-system">Bright Minds Early Learning Center</div>
+<div class="wrapper">
+  <div class="sidebar">
+    <h1><i class="fas fa-user"></i> {{ g.user['username'] }}</h1>
+    <a href="{{ url_for('system.index_enroll') }}"><i class="fas fa-home"></i>Home</a>
+    <a href="{{ url_for('system.profile') }}"><i class="fas fa-user"></i>Profile</a>
+    <a href="{{ url_for('system.announcements') }}"><i class="fas fa-address-card"></i>Announcements</a>
+    <a href="{{ url_for('auth.logout') }}"><i class="fas fa-sign-out-alt"></i>Log Out</a>
+  </div>
+  <div class="main_content">
+    <div class="info">
+      <div class="welcome-container">
+        <hr>
+        <hr>
+        <hr>
+        <hr>
+        <h1 class="welcome-title">Coming Soon!</h1>
+        <hr>
+        <hr>
+        <hr>
+        <hr>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

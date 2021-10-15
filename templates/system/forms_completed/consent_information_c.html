@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Admission Form | Part 2</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/styles_system.css') }}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="forms-enroll">
+    {% for kids in kids %}
+    <a href="{{ url_for('system.online_registration', id=kids['id']) }}">
+      <button style="width: 140px;" type="button" class="btn btn-danger">Go Back!</button>
+    </a>
+    <h3 style="font-size: 50px;" class="text-center">Online Registration {{ kids['firstname_kid'] }} {{
+      kids['middlename_kid'] }} {{ kids['lastname_kid'] }}</h3>
+    {% endfor %}
+    {% for consent_information in consent_information %}
+    <h1 style="padding: 20px;">Admission Information</h1>
+    <p><strong>Purpose:</strong> Use this form to collect all required information about a child enrolling in day care.
+    </p>
+    <p><strong>Directions:</strong> The day care provider gives this form to the child’s parent or guardian. The parent
+      or guardian completes the form in its entirety and returns it to the day care provider before the child's first
+      day of enrollment. The day care provider keeps the form on file at the child care facility.</p>
+    <div class="row">
+      <h2 class="title-forms">Consent Information</h2>
+      <p style="font-size: 20px;">Check all that apply:</p>
+      <div class="col-md-12">
+        <label class="form-label"><strong>1. Transporation</strong> <span style="color:#FF0000"
+            ;>*</span></strong></label>
+        <p>I give consent for my child to be transported and supervised by the operation's employees:</p>
+      </div>
+      <div class="col-md-8 row">
+        <div class="form-check col">
+          <input class="form-control"
+            value="{{ request.form['for_emergency_care'] or consent_information['for_emergency_care'] }}" disabled>
+          <label class="form-check-label">- For emergency care</label>
+        </div>
+        <div class="form-check col">
+          <input class="form-control"
+            value="{{ request.form['for_emergency_care'] or consent_information['for_emergency_care'] }}" disabled>
+          <label class="form-check-label">- On field trips</label>
+        </div>
+        <div class="form-check col">
+          <input class="form-control"
+            value="{{ request.form['to_and_from_home'] or consent_information['to_and_from_home'] }}" disabled>
+          <label class="form-check-label">- To and from home</label>
+        </div>
+        <div class="form-check col">
+          <input class="form-control"
+            value="{{ request.form['to_and_from_school'] or consent_information['to_and_from_school'] }}" disabled>
+          <label class="form-check-label">- To and from school</label>
+        </div>
+      </div>
+      <hr>
+      <div class="col-md-12">
+        <label class="form-label"><strong>2. Field Trips</strong> <span style="color:#FF0000"
+            ;>*</span></strong></label>
+        <div class="col-md-8 row">
+          <div class="form-check col">
+            <input class="form-control"
+              value="{{ request.form['consent_field_trips'] or consent_information['consent_field_trips'] }}" disabled>
+          </div>
+        </div>
+        <hr>
+        <div class="col-md-12">
+          <label class="form-label"><strong>3. Water Activities</strong> <span style="color:#FF0000"
+              ;>*</span></strong></label>
+          <p>I give consent for my child to participate in the following water activities:</p>
+          <div class="col-md-8 row">
+            <div class="form-check col">
+              <input class="form-control"
+                value="{{ request.form['water_table_play'] or consent_information['water_table_play'] }}" disabled>
+              <label class="form-check-label">- Water table play</label>
+            </div>
+            <div class="form-check col">
+              <input class="form-control"
+                value="{{ request.form['sprinkler_play'] or consent_information['sprinkler_play'] }}" disabled>
+              <label class="form-check-label">- Sprinkler play</label>
+            </div>
+            <div class="form-check col">
+              <input class="form-control"
+                value="{{ request.form['splashing_wading_pools'] or consent_information['splashing_wading_pools'] }}"
+                disabled>
+              <label class="form-check-label">- Splashing/wading pools</label>
+            </div>
+            <div class="form-check col">
+              <input class="form-control"
+                value="{{ request.form['swimming_pools'] or consent_information['swimming_pools'] }}" disabled>
+              <label class="form-check-label">- Swimming pools</label>
+            </div>
+            <div class="form-check col">
+              <input class="form-control"
+                value="{{ request.form['aquatic_playgrounds'] or consent_information['aquatic_playgrounds'] }}"
+                disabled>
+              <label class="form-check-label">- Aquatic playgrounds</label>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="col-md-11">
+          <label class="form-label"><strong>4. Receipt Of Written Operational Policies</strong> <span
+              style="color:#FF0000" ;>*</span></strong></label>
+          <p>I acknowledge receipt of the facility's operational policies, including those for:</p>
+          <div class="col-md-12 row">
+            <div class="form-check col">
+              <input class="form-control"
+                value="{{ request.form['discipline_guidance'] or consent_information['discipline_guidance'] }}"
+                disabled>
+              <label class="form-check-label">Discipline and guidance</label>
+            </div>
+            <div class="form-check col">
+              <input class="form-control"
+                value="{{ request.form['suspension_expulsion'] or consent_information['suspension_expulsion'] }}"
+                disabled>
+              <label class="form-check-label">Suspension and expulsion</label>
+            </div>
+            <div class="form-check col">
+              <input class="form-control"
+                value="{{ request.form['emergency_plans'] or consent_information['emergency_plans'] }}" disabled>
+              <label class="form-check-label">Emergency plans</label>
+            </div>
+            <div class="form-check col">
+              <input class="form-control"
+                value="{{ request.form['procedures_conducting_health'] or consent_information['procedures_conducting_health'] }}"
+                disabled>
+              <label class="form-check-label">Procedures for conducting health checks</label>
+            </div>
+            <div class="form-check col">
+              <input class="form-control" value="{{ request.form['safe_sleep'] or consent_information['safe_sleep'] }}"
+                disabled>
+              <label class="form-check-label">Safe sleep</label>
+            </div>
+            <div class="form-check col">
+              <input class="form-control"
+                value="{{ request.form['procedures_parents_discuss'] or consent_information['procedures_parents_discuss'] }}"
+                disabled>
+              <label class="form-check-label">Procedures for parents to discuss concerns with the director</label>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="col-md-11 row">
+          <div class="form-check col">
+            <input class="form-control"
+              value="{{ request.form['procedures_parents_activities'] or consent_information['procedures_parents_activities'] }}"
+              disabled>
+            <label class="form-check-label">Procedures for parents to participate in operation activities</label>
+          </div>
+          <div class="form-check col">
+            <input class="form-control"
+              value="{{ request.form['procedures_release_children'] or consent_information['procedures_release_children'] }}"
+              disabled>
+            <label class="form-check-label">Procedures for release of children</label>
+          </div>
+          <div class="form-check col">
+            <input class="form-control"
+              value="{{ request.form['illness_exclusion'] or consent_information['illness_exclusion'] }}" disabled>
+            <label class="form-check-label">Illness and exclusion criteria</label>
+          </div>
+          <div class="form-check col">
+            <input class="form-control"
+              value="{{ request.form['procedures_dispensing_medications'] or consent_information['procedures_dispensing_medications'] }}"
+              disabled>
+            <label class="form-check-label">Procedures for dispensing medications</label>
+          </div>
+        </div>
+        <hr>
+        <div class="col-md-11 row">
+          <div class="form-check col">
+            <input class="form-control"
+              value="{{ request.form['immunization_requirements'] or consent_information['immunization_requirements'] }}"
+              disabled>
+            <label class="form-check-label">Immunization requirements for children</label>
+          </div>
+          <div class="form-check col">
+            <input class="form-control"
+              value="{{ request.form['meals_food_service_practices'] or consent_information['meals_food_service_practices'] }}"
+              disabled>
+            <label class="form-check-label">Meals and food service practices</label>
+          </div>
+          <div class="form-check col">
+            <input class="form-control"
+              value="{{ request.form['procedures_visit_without_securing'] or consent_information['procedures_visit_without_securing'] }}"
+              disabled>
+            <label class="form-check-label">Procedures to visit the center without securing prior approval</label>
+          </div>
+          <div class="form-check col">
+            <input class="form-control"
+              value="{{ request.form['procedures_parent_child'] or consent_information['procedures_parent_child'] }}"
+              disabled>
+            <label class="form-check-label">Procedures for parents to contact Child Care Licensing, DFPS, Child Abuse
+              Hotline, and DFPS website</label>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <label class="form-label"><strong>5. Meals</strong> <span style="color:#FF0000" ;>*</span></strong></label>
+          <p>I understand that the following meals will be served to my child while in care:</p>
+          <div class="col-md-8 row">
+            <div class="form-check col">
+              <input class="form-control" value="{{ request.form['meals_none'] or consent_information['meals_none'] }}"
+                disabled>
+              <label class="form-check-label">None</label>
+            </div>
+            <div class="form-check col">
+              <input class="form-control"
+                value="{{ request.form['meals_breakfast'] or consent_information['meals_breakfast'] }}" disabled>
+              <label class="form-check-label">Breakfast</label>
+            </div>
+            <div class="form-check col">
+              <input class="form-control"
+                value="{{ request.form['meals_morning_snack'] or consent_information['meals_morning_snack'] }}"
+                disabled>
+              <label class="form-check-label">Morning snack</label>
+            </div>
+            <div class="form-check col">
+              <input class="form-control"
+                value="{{ request.form['meals_lunch'] or consent_information['meals_lunch'] }}" disabled>
+              <label class="form-check-label">Lunch</label>
+            </div>
+            <div class="form-check col">
+              <input class="form-control"
+                value="{{ request.form['meals_afternoon_snack'] or consent_information['meals_afternoon_snack'] }}"
+                disabled>
+              <label class="form-check-label">Afternoon snack</label>
+            </div>
+            <div class="form-check col">
+              <input class="form-control"
+                value="{{ request.form['meals_supper'] or consent_information['meals_supper'] }}" disabled>
+              <label class="form-check-label">Supper</label>
+            </div>
+            <div class="form-check col">
+              <input class="form-control"
+                value="{{ request.form['meals_evening_snack'] or consent_information['meals_evening_snack'] }}"
+                disabled>
+              <label class="form-check-label">Evening snack</label>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        <hr>
+        {% for consent_information_hours in consent_information_hours %}
+        <div class="col-md-12">
+          <label class="form-label"><strong>6. Days And Times In Care</strong> <span style="color:#FF0000"
+              ;>*</span></strong></label>
+          <p>My child is normally in care on the following days and times:</p>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Days Of The Week</th>
+                <th scope="col">AM</th>
+                <th scope="col">PM</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Monday</td>
+                <td><input type="time" name="monday_am" id="" class="form-control"
+                    value="{{ request.form['monday_am'] or consent_information_hours['monday_am'] }}" disabled></td>
+                <td><input type="time" name="monday_pm" id="" class="form-control"
+                    value="{{ request.form['monday_pm'] or consent_information_hours['monday_pm'] }}" disabled></td>
+              </tr>
+              <tr>
+                <td>Tuesday</td>
+                <td><input type="time" name="tuesday_am" id="" class="form-control"
+                    value="{{ request.form['tuesday_am'] or consent_information_hours['tuesday_am'] }}" disabled></td>
+                <td><input type="time" name="tuesday_pm" id="" class="form-control"
+                    value="{{ request.form['tuesday_pm'] or consent_information_hours['tuesday_pm'] }}" disabled></td>
+              </tr>
+              <tr>
+                <td>Wednesday</td>
+                <td><input type="time" name="wednesday_am" id="" class="form-control"
+                    value="{{ request.form['wednesday_am'] or consent_information_hours['wednesday_am'] }}" disabled>
+                </td>
+                <td><input type="time" name="wednesday_pm" id="" class="form-control"
+                    value="{{ request.form['wednesday_pm'] or consent_information_hours['wednesday_pm'] }}" disabled>
+                </td>
+              </tr>
+              <tr>
+                <td>Thursday</td>
+                <td><input type="time" name="thursday_am" id="" class="form-control"
+                    value="{{ request.form['thursday_am'] or consent_information_hours['thursday_am'] }}" disabled></td>
+                <td><input type="time" name="thursday_pm" id="" class="form-control"
+                    value="{{ request.form['thursday_pm'] or consent_information_hours['thursday_pm'] }}" disabled></td>
+              </tr>
+              <tr>
+                <td>Friday</td>
+                <td><input type="time" name="friday_am" id="" class="form-control"
+                    value="{{ request.form['friday_am'] or consent_information_hours['friday_am'] }}" disabled></td>
+                <td><input type="time" name="friday_pm" id="" class="form-control"
+                    value="{{ request.form['friday_pm'] or consent_information_hours['friday_pm'] }}" disabled></td>
+              </tr>
+              <tr>
+                <td>Saturday</td>
+                <td><input type="time" name="saturday_am" id="" class="form-control"
+                    value="{{ request.form['saturday_am'] or consent_information_hours['saturday_am'] }}" disabled></td>
+                <td><input type="time" name="saturday_pm" id="" class="form-control"
+                    value="{{ request.form['saturday_pm'] or consent_information_hours['saturday_pm'] }}" disabled></td>
+              </tr>
+              <tr>
+                <td>Sunday</td>
+                <td><input type="time" name="sunday_am" id="" class="form-control"
+                    value="{{ request.form['sunday_am'] or consent_information_hours['sunday_am'] }}" disabled></td>
+                <td><input type="time" name="sunday_pm" id="" class="form-control"
+                    value="{{ request.form['sunday_pm'] or consent_information_hours['sunday_pm'] }}" disabled></td>
+              </tr>
+            </tbody>
+          </table>
+          <hr>
+          <div class="">
+            <div class="form-check">
+              {% if consent_information_hours['sign'] == 0 %}
+              <input class="form-check-input" type="checkbox" checked>
+              <label class="form-check-label">I have completed this form and understand that checking this box is
+                considered
+                to be my
+                electronic signature of the form, certifying that the information above is true and accurate.
+                <strong><span style="color:#FF0000" ;>*</span></strong></label>
+              {% elif consent_information_hours['sign'] == 1 %}
+              <input class="form-check-input" type="checkbox" checked disabled>
+              <label class="form-check-label">I have completed this form and understand that checking this box is
+                considered
+                to be my
+                electronic signature of the form, certifying that the information above is true and accurate.
+                <strong><span style="color:#FF0000" ;>*</span></strong></label>
+              {% endif %}
+            </div>
+          </div>
+          <hr>
+        </div>
+        {% endfor %}
+      </div>
+</body>
+
+</html>
